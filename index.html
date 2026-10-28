@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadStart - Digital Beginning Reading Materials</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-extra.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">📚 ReadStart</div>
+    <p>Digital Beginning Reading Materials</p>
+</header>
+
+
+<!-- NAVIGATION (Assessment is first) -->
+<nav class="navigation">
+    <button class="nav-btn active" onclick="showPage('assessment')">📝 Assessment</button>
+    <button class="nav-btn" onclick="showPage('dashboard')">🏠 Home</button>
+    <button class="nav-btn" onclick="showPage('alphabet')">🔤 Alphabet</button>
+    <button class="nav-btn" onclick="showPage('words')">🧩 CVC Words</button>
+    <button class="nav-btn" onclick="showPage('books')">📖 Stories</button>
+    <button class="nav-btn" onclick="showPage('activities')">🎮 Activities</button>
+    <button class="nav-btn" onclick="showPage('dictionary')">📚 Dictionary</button>
+    <button class="nav-btn" onclick="showPage('progress')">⭐ My Progress</button>
+</nav>
+
+
+<main>
+
+<!-- ASSESSMENT (opens first) -->
+<section id="assessment" class="page active">
+
+    <div class="section-header">
+        <h1>📝 Reading Assessment</h1>
+        <p>Take the pre-test first. Read aloud using the microphone.
+           Take the post-test after completing the materials.</p>
+        <button class="instruction-btn" onclick="speakInstruction('assessment')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+
+    <div id="assessmentMenu" class="assessment-menu"></div>
+
+    <div id="assessmentArea"></div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page">
+
+    <div class="hero">
+        <div>
+            <h1>Welcome to ReadStart! 🌟</h1>
+            <p>Learn letters, words, stories, and reading skills through fun activities.</p>
+            <button class="instruction-btn" onclick="speakInstruction('dashboard')">
+                🔊 Listen to Instructions
+            </button>
+        </div>
+        <div class="hero-icon">📚</div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><span>⭐</span><h2 id="dashboardStars">0</h2><p>Stars</p></div>
+        <div class="stat-card"><span>📖</span><h2 id="dashboardBooks">0</h2><p>Books Read</p></div>
+        <div class="stat-card"><span>🎮</span><h2 id="dashboardActivities">0</h2><p>Activities</p></div>
+        <div class="stat-card"><span>🏆</span><h2 id="dashboardBadges">0</h2><p>Badges</p></div>
+    </div>
+
+    <div class="section-card">
+        <h2>📚 Start Learning</h2>
+        <div class="module-grid">
+            <button class="module-card" onclick="showPage('alphabet')">
+                <span>🔤</span><h3>Alphabet</h3><p>Learn letters and hear their sounds.</p>
+            </button>
+            <button class="module-card" onclick="showPage('words')">
+                <span>🧩</span><h3>CVC Words</h3><p>Practice simple beginning-reading words.</p>
+            </button>
+            <button class="module-card" onclick="showPage('books')">
+                <span>📖</span><h3>Digital Stories</h3><p>Read short beginner stories.</p>
+            </button>
+            <button class="module-card" onclick="showPage('activities')">
+                <span>🎮</span><h3>Activities</h3><p>Practice through interactive games.</p>
+            </button>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ALPHABET -->
+<section id="alphabet" class="page">
+    <div class="section-header">
+        <h1>🔤 Alphabet & Phonics</h1>
+        <p>Click a letter to hear its name, its sound chant, and an example word.</p>
+        <button class="instruction-btn" onclick="speakInstruction('alphabet')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+    <div id="alphabetGrid" class="alphabet-grid"></div>
+</section>
+
+
+<!-- CVC WORDS -->
+<section id="words" class="page">
+    <div class="section-header">
+        <h1>🧩 CVC Words</h1>
+        <p>Practice simple consonant-vowel-consonant words.</p>
+        <button class="instruction-btn" onclick="speakInstruction('words')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+    <div id="wordGrid" class="word-grid"></div>
+</section>
+
+
+<!-- DIGITAL STORIES -->
+<section id="books" class="page">
+    <div class="section-header">
+        <h1>📖 Digital Story Books</h1>
+        <p>Click a highlighted word while reading to open the ReadStart Dictionary.</p>
+        <button class="instruction-btn" onclick="speakInstruction('books')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+    <div id="bookGrid" class="book-grid"></div>
+</section>
+
+
+<!-- ACTIVITIES -->
+<section id="activities" class="page">
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+
+    <div class="section-header">
+        <h1>🎮 Interactive Reading Activities</h1>
+        <p>Choose an activity and answer 10 questions.</p>
+        <button class="instruction-btn" onclick="speakInstruction('activities')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+
+    <div id="activityContainer" class="activity-container">
+        <div class="activity-menu">
+            <button onclick="startActivityGame('sound')">🔤 Beginning Sounds</button>
+            <button onclick="startActivityGame('matching')">🧩 Word Matching</button>
+            <button onclick="startActivityGame('scramble')">🔀 Scrambled Words</button>
+            <button onclick="startActivityGame('blank')">✏️ Fill in the Blank</button>
+            <button onclick="startActivityGame('guess')">❓ Guessing Game</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- DICTIONARY -->
+<section id="dictionary" class="page">
+    <div class="section-header">
+        <h1>📚 ReadStart Dictionary</h1>
+        <p>Search for a word to learn its meaning and example.</p>
+        <button class="instruction-btn" onclick="speakInstruction('dictionary')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+
+    <div class="dictionary-search">
+        <input id="dictionarySearch" type="text" placeholder="Type a word...">
+        <button class="primary-btn" onclick="searchDictionary()">🔍 Search</button>
+    </div>
+
+    <div id="dictionaryResults" class="dictionary-results"></div>
+</section>
+
+
+<!-- PROGRESS -->
+<section id="progress" class="page">
+    <div class="section-header">
+        <h1>⭐ My Progress</h1>
+        <p>Track your reading-learning progress.</p>
+        <button class="instruction-btn" onclick="speakInstruction('progress')">
+            🔊 Listen to Instructions
+        </button>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><span>⭐</span><h2 id="progressStars">0</h2><p>Stars</p></div>
+        <div class="stat-card"><span>🎮</span><h2 id="progressActivities">0</h2><p>Activities</p></div>
+    </div>
+
+    <div class="section-card">
+        <h2>📊 Learning Progress</h2>
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <h3 id="progressPercent">0%</h3>
+    </div>
+
+    <div class="comparison-card">
+        <h2>📈 Assessment Comparison</h2>
+        <div class="comparison-grid">
+            <div><h3>Pre-Test</h3><strong id="studentPreScore">Not taken</strong></div>
+            <div><h3>Post-Test</h3><strong id="studentPostScore">Not taken</strong></div>
+            <div><h3>Improvement</h3><strong id="studentImprovement">--</strong></div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h2>🏆 Badges</h2>
+        <div id="badgeGrid" class="badge-grid"></div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- STORY MODAL -->
+<div id="storyModal" class="modal">
+    <div class="modal-content story-modal-content">
+
+        <button class="modal-close" onclick="closeStory()">✕</button>
+
+        <div id="storyEmoji" class="story-emoji">📖</div>
+        <h2 id="storyTitle">Story</h2>
+
+        <button class="instruction-btn" onclick="speakInstruction('story')">
+            🔊 Listen to Instructions
+        </button>
+
+        <div class="story-progress"><div id="storyProgress" class="story-progress-fill"></div></div>
+        <p id="storyPageLabel" class="story-page-label"></p>
+
+        <div id="storyText" class="story-text"></div>
+
+        <div class="story-buttons">
+            <button class="secondary-btn" onclick="previousStoryPage()">← Previous</button>
+            <button class="primary-btn" onclick="readStoryAloud()">🔊 Read Aloud</button>
+            <button class="primary-btn" onclick="nextStoryPage()">Next →</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- DICTIONARY MODAL -->
+<div id="dictionaryModal" class="modal">
+    <div class="modal-content dictionary-modal-content">
+
+        <button class="modal-close" onclick="closeDictionary()">✕</button>
+
+        <div class="dictionary-big-icon">📖</div>
+        <h2 id="modalDictionaryWord">Word</h2>
+        <h3 id="modalDictionaryWordText">Word</h3>
+
+        <div class="dictionary-section">
+            <strong>📚 Meaning</strong>
+            <p id="modalDictionaryMeaning"></p>
+        </div>
+
+        <div class="dictionary-section">
+            <strong>✏️ Example</strong>
+            <p id="modalDictionaryExample"></p>
+        </div>
+
+        <button class="primary-btn" onclick="speakDictionaryEntry()">
+            🔊 Listen to Word, Meaning & Example
+        </button>
+
+    </div>
+</div>
+
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
